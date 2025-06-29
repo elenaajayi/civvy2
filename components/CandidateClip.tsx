@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { Play, Pause } from 'lucide-react-native';
+import AskCandidateModal from './AskCandidateModal';
 
 interface CandidateClipProps {
   id: number;
@@ -144,14 +145,12 @@ export default function CandidateClip({ id, name, videoUrl, issues }: CandidateC
       </View>
 
       {/* Ask Candidate Modal */}
-      {showAskModal && (
-        <AskCandidateModal
-          candidateId={id}
-          candidateName={name}
-          visible={showAskModal}
-          onClose={() => setShowAskModal(false)}
-        />
-      )}
+      <AskCandidateModal
+        candidateId={id}
+        candidateName={name}
+        visible={showAskModal}
+        onClose={() => setShowAskModal(false)}
+      />
     </View>
   );
 }
